@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Vzy</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="title" content="Vzy · AI Website Builder">
+    <meta name="description" content="Use Vzy AI to create beautiful websites with captivating content, images, and forms. Edit easily on any browser - no code or design skills required.">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://app.vzy.co/">
+    <meta property="og:title" content="Vzy · AI Website Builder">
+    <meta property="og:description" content="Use Vzy AI to create beautiful websites with captivating content, images, and forms. Edit easily on any browser - no code or design skills required.">
+    <meta property="og:image" content="http://vzy.s3.amazonaws.com/uploads/6333a6ea741f45554380ba95/7eo36vil_1691766883637.png">
+    <!-- <meta property="og:image" content="https://app.vzy.co/assets/images/vzy-share-1.png"> -->
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://app.vzy.co/">
+    <meta property="twitter:title" content="Vzy · AI Website Builder">
+    <meta property="twitter:description" content="Use Vzy AI to create beautiful websites with captivating content, images, and forms. Edit easily on any browser - no code or design skills required.">
+    <meta property="twitter:image" content="http://vzy.s3.amazonaws.com/uploads/6333a6ea741f45554380ba95/7eo36vil_1691766883637.png">
+    <!-- <meta property="twitter:image" content="https://app.vzy.co/assets/images/vzy-share-1.png"> -->
+
+    <link rel="icon" type="image/png" href="/assets/icons/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+
+    <link rel="preconnect" href="https://storage.googleapis.com/vzy-fonts">
+    <link rel="preconnect" href="https://storage.googleapis.com/vzy-fonts" crossorigin>
+
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#808080">
+    <!-- <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180"> -->
+    <link rel="mask-icon" href="/favicon.svg" color="#808080">
+    <script type="module" src="https://js.stripe.com/v3/"></script>
+    <script async src="https://cdn.tolt.io/tolt.js" data-tolt="3dad0117-b706-41e8-a534-06385e3cbbdb"></script>
+
+    <style lang="css">
+      /* #preloader{
+        display: flex;justify-content:center;align-items:center; flex-direction:column;
+        height:100vh;width: 100vw;
+        position: fixed; z-index: 100;top: 0px;left: 0px;
+        background: var(--background);
+        opacity: 1;
+              text-align:center;
+              padding:50px;
+      }
+      #preloader.done{
+        opacity: 0;
+        transition: 1s ease;
+      } */
+          @font-face {
+              font-family: "Inter Bold";
+              src: url("https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuFuYMZhrib2Bg-4.ttf");
+          }
+          @font-face {
+              font-family: "Amiamie Round regular";
+              src: url("https://storage.googleapis.com/vzy-fonts/Amiamie-Typeface-main/ttf/Amiamie-RegularRound.ttf");
+          }
+          @font-face {
+              font-family: "Amiamie Round italic";
+              src: url("https://storage.googleapis.com/vzy-fonts/Amiamie-Typeface-main/ttf/Amiamie-ItalicRound.ttf");
+          }
+          @font-face {
+              font-family: "Amiamie regular";
+              src: url("https://storage.googleapis.com/vzy-fonts/Amiamie-Typeface-main/ttf/Amiamie-Regular.ttf");
+          }
+          @font-face {
+              font-family: "Amiamie italic";
+              src: url("https://storage.googleapis.com/vzy-fonts/Amiamie-Typeface-main/ttf/Amiamie-Italic.ttf");
+          }
+    </style>
+
+    
+  <script type="module" crossorigin src="/assets/index.e0a4b01c.js"></script>
+  <link rel="stylesheet" href="/assets/index.e67760cf.css">
+</head>
+  <body>
+    <div id="app"></div>
+    
+    <!-- <script type="module" src="/src/main.ts"></script> -->
+    
+<!-- Partnero Universal -->
+<script>
+  (function(p,t,n,e,r,o){ p['__partnerObject']=r;function f(){
+  var c={ a:arguments,q:[]};var r=this.push(c);return "number"!=typeof r?r:f.bind(c.q);}
+  f.q=f.q||[];p[r]=p[r]||f.bind(f.q);p[r].q=p[r].q||f.q;o=t.createElement(n);
+  var _=t.getElementsByTagName(n)[0];o.async=1;o.src=e+'?v'+(~~(new Date().getTime()/1e6));
+  _.parentNode.insertBefore(o,_);})(window, document, 'script', 'https://app.partnero.com/js/universal.js', 'po');
+  po('settings', 'assets_host', 'https://assets.partnero.com');
+  po('program', 'PREZJRAZ', 'load');
+</script>
+<!-- End Partnero Universal -->
+
+    <script async src="//cdn.iframe.ly/embed.js"></script>
+    <!-- <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="2af350ac-5a57-4682-9f41-ad1d95054b57";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script> -->
+    <!-- <script type="text/javascript">!function(e,t,n){function a(){var e=t.getElementsByTagName("script")[0],n=t.createElement("script");n.type="text/javascript",n.async=!0,n.src="https://beacon-v2.helpscout.net",e.parentNode.insertBefore(n,e)}if(e.Beacon=n=function(t,n,a){e.Beacon.readyQueue.push({method:t,options:n,data:a})},n.readyQueue=[],"complete"===t.readyState)return a();e.attachEvent?e.attachEvent("onload",a):e.addEventListener("load",a,!1)}(window,document,window.Beacon||function(){});
+    </script><script type="text/javascript">window.Beacon('init', '758e6163-000b-472b-98c6-315104160aba')</script> -->
+  </body>
+
+</html>
