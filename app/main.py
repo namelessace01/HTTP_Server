@@ -1,10 +1,13 @@
+# Uncomment this to pass the first stage
 import socket
 
 
 def main():
-
+    # You can use print statements as follows for debugging, they'll be visible when running tests.
     print("Logs from your program will appear here!")
-    
+
+    # Uncomment this to pass the first stage
+    #
     server_socket = socket.create_server(("localhost", 4221))
     print("Server started, waiting for connections...")
 
@@ -17,6 +20,17 @@ def main():
 
     # splitting the client data into a list of strings to give a list where each element is a line from the HTTP request
     split_cli_data = list[str] = cli_data.split("\r\n")
+
+
+    # response from the server
+    response: bytes = "HTTP/1.1 200 OK\r\n\r\n".encode()
+    print("Extraction Complete.")
+
+    # if split client data separated by space indexing the second element is not equal to "/"
+    if split_cli_data[0].split(" ")[1] != "/":
+        # response from the server
+        response = "HTTP/1.1 404 Not Found\r\n\r\n".encode()
+        print("Error 404: Bad Request")
 
 
     print(f"Connected, client address: {address}")
