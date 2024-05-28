@@ -23,19 +23,21 @@ def main():
         method, path, version = split_request[0].split(" ")
 
         if path == "/":
-            confirm_response = "HTTP/1.1 200 OK \r\n\r\n"
+            confirm_response = "HTTP/1.1 200 OK\r\n\r\n"
             client.send(confirm_response.encode())
 
         elif path.startswith("/echo"):
             random_path = path[6:]
             response = f"HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: {len(random_path)}\r\n\r\n{random_path}\r\n"
-            client.send(confirm_response.encode())
+            client.send(response.encode())
 
         else:
-            not_found_response = "HTTP/1.1 400 Not Found \r\n\r\n"
-            client.send(not_found_response)
+            not_found_response = "HTTP/1.1 404 Not Found\r\n\r\n"
+            client.send(not_found_response.encode())
 
         client.close()
+
+        
     # # receving data from the client side using "recv()" method on the client and "decode() method to decode from bytes to string"
     # cli_data: str = client.recv(1024).decode()
     # print("Decoding client data...")
