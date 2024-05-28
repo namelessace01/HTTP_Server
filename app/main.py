@@ -10,28 +10,37 @@ def main():
 
     client, address = server_socket.accept()  # wait for client
     print(client, address)
+    print(f"Received connection from: {address[0]}, port: {address[1]}")
     
 
-    # receving data from the client side using "recv" method on the client
+    # receving data from the client side using "recv()" method on the client and "decode() method to decode from bytes to string"
     cli_data: str = client.recv(1024).decode()
+    print("Decoding client data...")
 
     # splitting the client data into a list of strings to give a list where each element is a line from the HTTP request
-    split_cli_data = list[str] = cli_data.split("\r\n")
+    split_cli_data: list[str] = cli_data.split("\r\n")
+    print("Splitting client data...")
 
 
     # response from the server
-    response: bytes = "HTTP/1.1 200 OK\r\n\r\n".encode()
-    print("Extraction Complete.")
+    response: bytes = "HTTP/1.1 200 OK\r\n\r\n".encode() 
+    # using the "encode()" method to convert string to bytes, because the server reads bytes not strings."
+    print("""Encoding Data...
+          Extraction Complete.""")
 
     # if split client data separated by space indexing the second element is not equal to "/"
     if split_cli_data[0].split(" ")[1] != "/":
         # response from the server
         response = "HTTP/1.1 404 Not Found\r\n\r\n".encode()
         print("Error 404: Bad Request")
+    client.send(response)
 
+    print("Disconnected from server.")
+    client.close()
+    server_socket.close()
 
-    print(f"Connected, client address: {address}")
-    client.sendall(b"HTTP/1.1 200 OK\r\n\r\n")  # wait for client
+    # print(f"Connected, client address: {address}")
+    # client.sendall(b"HTTP/1.1 200 OK\r\n\r\n")  # wait for client
 
     
 if __name__ == "__main__":
