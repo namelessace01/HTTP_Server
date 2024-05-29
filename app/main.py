@@ -29,6 +29,11 @@ def main():
             confirm_response = "HTTP/1.1 200 OK\r\n\r\n"
             client.send(confirm_response.encode())
 
+        elif path == "/user-agent":
+            user_agent = next((user.split(":")[1] for user in split_request if user.startswith("User-Agent")),None)
+            response = f"HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: {len(user_agent)}\r\n\r\n{user_agent}\r\n"
+            client.send(response.encode())
+
         elif path.startswith("/echo"):
             random_path = path[6:]
             response = f"HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: {len(random_path)}\r\n\r\n{random_path}\r\n"
