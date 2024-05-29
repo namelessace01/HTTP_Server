@@ -1,5 +1,5 @@
 import socket
-
+import re
 
 def main():
     
@@ -9,22 +9,30 @@ def main():
     print("Server started, waiting for connections...")
 
     client, address = server_socket.accept()  # wait for client
-    print(client, address)
-    print(f"Received connection from: {address[0]}, port: {address[1]}")
+    print(f"""{client, address}
+          Received connection from: {address[0]}, port: {address[1]}""")
 
     with client:
         # using 4096 as buffer size to provide good performance and simple HTTP handling requests.
         request = client.recv(4096).decode()
+        print(f"This is the request {request}")
 
         # splitting the request
         split_request = request.split("\r\n")
+        print(f"This is the Split Request {split_request}")
 
         # should expect three set of split request GET /path HTTP/1.1
         method, path, version = split_request[0].split(" ")
+        print(f"This is the method: ({method}), This is the path: ({path}), This is version: ({version})")
 
         if path == "/":
             confirm_response = "HTTP/1.1 200 OK\r\n\r\n"
             client.send(confirm_response.encode())
+
+        elif path == "/user-agent":
+            user_agent = next((user.split(":")[1] for user in split_request if user.startswith("User-Agent")),None)
+            response = f"HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: {len(user_agent)}\r\n\r\n{user_agent}\r\n"
+            client.send(response.encode())
 
         elif path.startswith("/echo"):
             random_path = path[6:]
@@ -34,6 +42,7 @@ def main():
         else:
             not_found_response = "HTTP/1.1 404 Not Found\r\n\r\n"
             client.send(not_found_response.encode())
+
 
         client.close()
 
