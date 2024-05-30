@@ -30,12 +30,13 @@ def main():
                 client.send(confirm_response)
 
             elif path == "/user-agent":
-                user_agent = next((client_data.split(": ")[1] for client_data in split_client_request if client_data.startswith("User_Agent")), None)
+                user_agent = next((client_data.split(" ")[1] for client_data in split_client_request if client_data.startswith("User_Agent")), None)
+                print(user_agent)
                 response = (f"HTTP/1.1 200 OK\r\n\r\nContent-Type: text/plain\r\n\r\nContent-Length: {len(user_agent)}").encode()
                 client.send(response)
             
             elif path.startswith("/echo"):
-                random_path = path[6:]
+                random_path = path[5:]
                 response = (f"HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: {len(random_path)}\r\n\r\n{random_path}\r\n").encode()
                 client.send(response)
 
@@ -65,7 +66,8 @@ def main():
 
         elif path == "/user-agent":
             # splitting the client data into a list of strings to give a list where each element is a line from the HTTP request
-            user_agent = next((client_data.split(": ")[1] for client_data in split_client_request if client_data.startswith("User-Agent")),None)
+            user_agent = next((client_data.split(" ")[1] for client_data in split_client_request if client_data.startswith("User-Agent")),None)
+            print(f"The user agent {user_agent}")
             response = (f"HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: {len(user_agent)}\r\n\r\n{user_agent}\r\n").encode()
             # using the "encode()" method to convert string to bytes, because the server reads bytes not strings."
             client.send(response)
