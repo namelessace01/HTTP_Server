@@ -1,5 +1,6 @@
 import socket
 import threading
+import sys
 
 def request_handler(client, address):
     with client:
@@ -18,7 +19,7 @@ def request_handler(client, address):
             confirm_response: bytes = "HTTP/1.1 200 OK\r\n\r\n".encode()
             client.send(confirm_response)
 
-        elif path == "/user-agent":
+        elif "/user-agent" in path:
             user_agent = next((client_data.split(" ")[1] for client_data in split_client_request if client_data.startswith("User-Agent")), None)
             print(f"The User Agent ({user_agent})")
             response = (f"HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: ({len(user_agent)})\r\n\r\n({user_agent})\r\n").encode()
@@ -28,6 +29,17 @@ def request_handler(client, address):
             random_path = path[6:]
             response = (f"HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: ({len(random_path)})\r\n\r\n({random_path})\r\n").encode()
             client.send(response)
+
+        elif "/files" in path:
+            directory = sys.argv[2]
+            filename = path[6:]
+            try:
+                with open (f"/{directory}/{filename}", "r") as file:
+                    body = file.read()
+                    response = (f"HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: ({len(body)})\r\n\r\n({body})\r\n").encode()
+            except Exception as e:
+                print(f"Error Reading /{directory}/{filename}. Exception: {e}")
+                response = "HTTP/1.1 404 Not Found\r\n\r\n".encode()
 
         else:
             not_found_response = "HTTP/1.1 404 Not Found\r\n\r\n".encode()
@@ -52,6 +64,9 @@ def main():
             threading.Thread(target=request_handler, args=(client, address)).start()
     except Exception as e:
         print(f"Server error: {e}")
+    except KeyboardInterrupt:
+        print("Keyboard Interrupt: Exiting...")
+        sys.exit(0)
     finally:
         server_socket.close()
 
