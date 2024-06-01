@@ -28,6 +28,7 @@ def request_handler(client, address):
         elif path.startswith("/echo"):
             random_path = path[6:]
             response = (f"HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: ({len(random_path)})\r\n\r\n({random_path})\r\n").encode()
+            print(f"Starts with /echo: ({response})")
             client.send(response)
 
         elif "/files" in path:
